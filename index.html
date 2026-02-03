@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="metaTitle">Guía para jugar conmigo desde la Jungla</title>
+  <meta name="description" content="Guía breve para coordinar mejor con tu jungla: ganks, objetivos, comunicación y macro para cerrar partidas rápido." data-i18n-attr="content:metaDescription" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/webp" href="assets/favicon.webp">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <header class="topbar" id="top">
+    <div class="container topbar__inner">
+      <a class="brand" href="#top" aria-label="Inicio" data-i18n-attr="aria-label:brandLabel">
+        <span class="brand__dot" aria-hidden="true"></span>
+        <span data-i18n="brand">Guía Jungla</span>
+      </a>
+
+      <nav class="nav" aria-label="Secciones" data-i18n-attr="aria-label:navLabel">
+        <a class="nav__link" href="#estilo" data-i18n="navStyle">Estilo</a>
+        <a class="nav__link" href="#gank" data-i18n="navGank">Gank</a>
+        <a class="nav__link" href="#objetivos" data-i18n="navObjectives">Objetivos</a>
+        <a class="nav__link" href="#roles" data-i18n="navRoles">Roles</a>
+        <a class="nav__link" href="#cierre" data-i18n="navClose">Cerrar</a>
+      </nav>
+
+      <div class="topbar__actions">
+        <button class="lang__toggle" type="button" data-lang-toggle aria-label="Cambiar idioma" data-i18n-attr="aria-label:langToggle">
+          <span class="lang__icon lang__icon--es" aria-hidden="true">
+            <svg viewBox="0 0 640 480" width="20" height="20"><path fill="#ffda44" d="M0 0h640v480H0z"/><path fill="#d80027" d="M0 0h640v120H0zm0 360h640v120H0z"/></svg>
+          </span>
+          <span class="lang__icon lang__icon--en" aria-hidden="true">
+             <svg viewBox="0 0 741 390" width="20" height="20"><path fill="#b22234" d="M0 0h741v390H0z"/><path d="M0 30h741v30H0zm0 60h741v30H0zm0 60h741v30H0zm0 60h741v30H0zm0 60h741v30H0zm0 60h741v30H0z" fill="#fff"/><path fill="#3c3b6e" d="M0 0h296.4v210H0z"/><g fill="#fff"><g id="d"><g id="c"><g id="e"><circle r="6.16" cx="24.7" cy="21"/></g><use href="#e" x="49.4"/><use href="#e" x="98.8"/><use href="#e" x="148.2"/><use href="#e" x="197.6"/><use href="#e" x="247"/></g><use href="#c" x="24.7" y="21"/></g><use href="#d" y="42"/><use href="#d" y="84"/><use href="#d" y="126"/><use href="#c" y="168"/></g></svg>
+           </span>
+        </button>
+        <button class="theme__toggle" type="button" data-theme-toggle aria-pressed="true" data-i18n-attr="aria-label:themeToggle">
+          <span class="theme__icon theme__icon--sun" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </span>
+          <span class="theme__icon theme__icon--moon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </span>
+        </button>
+        <a class="btn btn--ghost" href="#objetivos" data-i18n="ctaObjectives">Ir a objetivos</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero__grid">
+        <div>
+          <p class="kicker" data-i18n="heroKicker">Para el equipo</p>
+          <h1 data-i18n="heroTitle">Cómo jugar conmigo desde la jungla 💚</h1>
+          <p class="lead" data-i18n-html="heroLead">
+            Para coordinarnos mejor, jugar con menos caos y cerrar partidas más rápido.
+            Mi foco: <strong>tempo</strong>, <strong>farmeo consistente</strong> y <strong>jugadas con alta probabilidad</strong>.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn" href="#gank" data-i18n="heroCtaGank">Checklist de gank</a>
+            <a class="btn btn--secondary" href="#roles" data-i18n="heroCtaRoles">Por rol</a>
+          </div>
+
+          <div class="hero__note">
+            <p data-i18n-html="heroNote">
+              <strong>Regla de oro:</strong> si alineamos <em>waves</em>, <em>visión</em> y <em>tempo</em>,
+              el juego se vuelve simple.
+            </p>
+          </div>
+        </div>
+
+        <div class="hero__media" role="img" aria-label="Imagen de portada (mapa/jungla)" data-i18n-attr="aria-label:heroMediaLabel">
+          <img class="media__img" src="assets/hero.webp" alt="Mapa estilo MOBA visto desde arriba, tonos verdes" data-i18n-attr="alt:heroMediaAlt" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="estilo">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="styleTitle">Mi forma de jugar jungla</h2>
+          <p class="muted" data-i18n="styleIntro">Esto explica por qué a veces digo “no es buen timing” y por qué eso suele ganar partidas.</p>
+        </div>
+
+        <div class="cards cards--3">
+          <article class="card">
+            <h3 data-i18n="styleCard1Title">Farm consistente</h3>
+            <p data-i18n="styleCard1Text">Priorizo campamentos para mantenerme fuerte y no perder tempo.</p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="styleCard2Title">Riesgo medido</h3>
+            <p data-i18n="styleCard2Text">Evito ganks coinflip: busco ventanas que se repiten y se pueden planear.</p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="styleCard3Title">Castigar errores</h3>
+            <p data-i18n="styleCard3Text">Si el rival se pasa, no tiene visión o usa recursos mal, ahí sí entro.</p>
+          </article>
+        </div>
+
+        <div class="split">
+          <div class="split__text">
+            <h3 data-i18n="styleExpectTitle">Qué pueden esperar de mí</h3>
+            <ul class="list list--check">
+              <li data-i18n="styleExpect1">Rutas coherentes según estado de líneas.</li>
+              <li data-i18n="styleExpect2">Responder al rival con información (contrajugada o cross-map).</li>
+              <li data-i18n="styleExpect3">Llamar objetivos cuando el contexto es favorable.</li>
+              <li data-i18n="styleExpect4">Ayudar a asegurar visión cuando mi ruta lo permite.</li>
+            </ul>
+          </div>
+
+          <div class="split__text">
+            <h3 data-i18n="styleAvoidTitle">Qué no suele funcionar pedirme</h3>
+            <ul class="list list--x">
+              <li data-i18n="styleAvoid1">Ganks sin CC, sin wave o sin info del jungla rival.</li>
+              <li data-i18n="styleAvoid2">Pelear objetivos sin prioridad de líneas.</li>
+              <li data-i18n="styleAvoid3">Cubrir pushes sin visión que terminan en muerte.</li>
+              <li data-i18n="styleAvoid4">Forzar peleas en timers malos (pierdo tempo y quedo detrás).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="gank">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="gankTitle">Checklist: ¿cuándo un gank es exigible?</h2>
+          <p class="muted" data-i18n="gankIntro">Si se cumplen la mayoría, es una jugada “jugable”. Si faltan varias, normalmente es mejor preparar la siguiente.</p>
+        </div>
+
+        <div class="checkgrid">
+          <div>
+            <ol class="checklist">
+              <li data-i18n-html="gankItem1"><strong>CC o daño suficiente</strong> para asegurar algo (kill, flash, placas, presión).</li>
+              <li data-i18n-html="gankItem2"><strong>Rival avanzado</strong> o sin recursos defensivos (flash/heal/escape).</li>
+              <li data-i18n-html="gankItem3"><strong>Wave favorable</strong> (o neutral) para no regalar 2 waves por moverse.</li>
+              <li data-i18n-html="gankItem4"><strong>Info del jungla enemigo</strong>: visto, deducido por ruta o por wards.</li>
+              <li data-i18n-html="gankItem5"><strong>No rompe mi ruta</strong>: el gank no debe costar 2 campamentos + tempo.</li>
+              <li data-i18n-html="gankItem6"><strong>Deja algo concreto</strong>: reset, objetivo, placas, control de zona.</li>
+            </ol>
+
+            <div class="callout">
+              <h3 data-i18n="gankCalloutTitle">Cómo pedirme un gank (mensaje corto)</h3>
+              <p><code data-i18n="gankCalloutCode">“Tengo CC / wave ok / rival sin flash / jungla visto top — puedes venir en 20s”</code></p>
+              <p class="muted" data-i18n="gankCalloutHint">Con esa info, decido rápido y mejor.</p>
+            </div>
+          </div>
+
+          <div class="checkgrid__right" role="img" aria-label="Imagen checklist gank" data-i18n-attr="aria-label:gankMediaLabel">
+            <img class="media__img" src="assets/gank.webp" alt="Escena de línea con wards y overextend, estilo MOBA" data-i18n-attr="alt:gankMediaAlt" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="objetivos">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="objectivesTitle">Objetivos: cuándo, cómo y qué significan mis pings</h2>
+          <p class="muted" data-i18n="objectivesIntro">Un objetivo no es “porque sí”; es por contexto. Esto evita flips y nos acelera el cierre.</p>
+        </div>
+
+        <div class="twoCol">
+          <div class="panel">
+            <h3 data-i18n="objectivesWhenTitle">Cuándo se considera un objetivo</h3>
+            <ul class="list list--dot">
+              <li data-i18n-html="objectivesWhen1"><strong>Prioridad real</strong> en líneas cercanas (se mueven primero).</li>
+              <li data-i18n-html="objectivesWhen2"><strong>Jungla enemigo lejos</strong>, muerto o sin smite: ventana limpia.</li>
+              <li data-i18n-html="objectivesWhen3"><strong>Waves empujadas/crasheando</strong>: el rival pierde si rota.</li>
+              <li data-i18n-html="objectivesWhen4"><strong>Recursos disponibles</strong>: smite, ultis clave, summs importantes.</li>
+              <li data-i18n-html="objectivesWhen5"><strong>Visión mínima</strong>: control ward + sweep / info de entradas.</li>
+            </ul>
+            <p class="muted" data-i18n-html="objectivesWhenNote">Si faltan 2 o más, normalmente es mejor <strong>farmear y preparar</strong> (visión + waves + timers).</p>
+          </div>
+
+          <div class="panel">
+            <h3 data-i18n="objectivesPingTitle">Qué significa cuando pingueo un objetivo</h3>
+            <ol class="list list--num">
+              <li data-i18n="objectivesPing1">Tengo ruta/tempo para hacerlo ahora.</li>
+              <li data-i18n-html="objectivesPing2">Necesito que empujen wave <strong>ya</strong>.</li>
+              <li data-i18n="objectivesPing3">Necesito visión/limpieza de entradas.</li>
+              <li data-i18n="objectivesPing4">Si no puedes venir, ping “no” y yo juego cross-map.</li>
+            </ol>
+            <div class="mini" data-i18n-html="objectivesPingMini"><strong>Mejor respuesta:</strong> 1 ping claro (sí/no) + empujar wave.</div>
+          </div>
+        </div>
+
+        <div class="proto">
+          <div>
+            <h3 data-i18n="protocolTitle">Protocolo rápido (paso a paso)</h3>
+
+            <div class="steps">
+              <div class="step">
+                <div class="step__tag" data-i18n="protocolBefore">Antes (10–20s)</div>
+                <ul class="list list--dot">
+                  <li data-i18n="protocolBefore1">Empujar wave</li>
+                  <li data-i18n="protocolBefore2">Wards en entradas</li>
+                  <li data-i18n="protocolBefore3">Sweep si puedes</li>
+                </ul>
+              </div>
+
+              <div class="step">
+                <div class="step__tag" data-i18n="protocolDuring">Durante</div>
+                <ul class="list list--dot">
+                  <li data-i18n="protocolDuring1">El objetivo es el objetivo (no chase)</li>
+                  <li data-i18n="protocolDuring2">Zonificar y proteger área</li>
+                  <li data-i18n="protocolDuring3">Guardar CC para cortar entrada</li>
+                </ul>
+              </div>
+
+              <div class="step">
+                <div class="step__tag" data-i18n="protocolAfter">Después</div>
+                <ul class="list list--dot">
+                  <li data-i18n="protocolAfter1">Reset juntos por tempo</li>
+                  <li data-i18n="protocolAfter2">Convertir en torre / visión profunda</li>
+                  <li data-i18n="protocolAfter3">Invade corto si es seguro</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="callout callout--warn">
+              <h4 data-i18n="protocolWarningTitle">Si se vuelve 50/50…</h4>
+              <p data-i18n="protocolWarningText">Si no estamos listos y llega 5v5, priorizo salir y no “flippear”.</p>
+            </div>
+          </div>
+
+          <div class="proto__media" role="img" aria-label="Imagen de objetivos (dragón/barón)" data-i18n-attr="aria-label:objectivesMediaLabel">
+            <img class="media__img" src="assets/objetivos.webp" alt="Zona de dragón/barón con wards, estilo MOBA" data-i18n-attr="alt:objectivesMediaAlt" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="roles">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="rolesTitle">Cómo ayudarme por rol</h2>
+          <p class="muted" data-i18n="rolesIntro">Separado por early/mid/late para que sea aplicable y rápido de recordar.</p>
+        </div>
+
+        <div class="rolegrid">
+          <article class="role">
+            <div class="role__head">
+              <h3 data-i18n="roleTopTitle">TOP</h3>
+              <span class="pill" data-i18n="roleTopPill">Wave • TP • Side</span>
+            </div>
+            <div class="role__body">
+              <h4 data-i18n="labelEarly">Early</h4>
+              <ul class="list list--dot">
+                <li data-i18n="roleTopEarly1">Controla wave (freeze/slow) si quieres ventana de gank.</li>
+                <li data-i18n="roleTopEarly2">Wardea river/tri a tiempo (no cuando ya te gankean).</li>
+              </ul>
+              <h4 data-i18n="labelMid">Mid</h4>
+              <ul class="list list--dot">
+                <li data-i18n="roleTopMid1">TP para crear números en objetivo o asegurar side con presión.</li>
+                <li data-i18n="roleTopMid2">Si vas ganando, presiona y muévete un paso (solo aparecer ayuda).</li>
+              </ul>
+              <h4 data-i18n="labelLate">Late</h4>
+              <ul class="list list--dot">
+                <li data-i18n="roleTopLate1">Side con visión: atrae presión sin morir.</li>
+                <li data-i18n="roleTopLate2">Si vienen 2 por ti, ping y juega lento: yo hago el resto del mapa.</li>
+              </ul>
+            </div>
+            <div class="role__media" role="img" aria-label="Imagen TOP" data-i18n-attr="aria-label:roleTopMediaLabel">
+              <img class="media__img" src="assets/top.webp" alt="Ilustración top lane MOBA" data-i18n-attr="alt:roleTopMediaAlt" />
+            </div>
+          </article>
+
+          <article class="role">
+            <div class="role__head">
+              <h3 data-i18n="roleMidTitle">MID</h3>
+              <span class="pill" data-i18n="roleMidPill">Prio • Rotación • Picks</span>
+            </div>
+            <div class="role__body">
+              <h4 data-i18n="labelEarly">Early</h4>
+              <ul class="list list--dot">
+                <li data-i18n="roleMidEarly1">Prioridad para cangrejo y control de río.</li>
+                <li data-i18n="roleMidEarly2">Avisos claros del jungla rival (timer + dirección).</li>
+              </ul>
+              <h4 data-i18n="labelMid">Mid</h4>
+              <ul class="list list--dot">
+                <li data-i18n="roleMidMid1">Rotaciones cortas cuando pingueo: 3 segundos pueden bastar.</li>
+                <li data-i18n="roleMidMid2">Empujar mid antes de objetivo: mid prio = objetivo fácil.</li>
+              </ul>
+              <h4 data-i18n="labelLate">Late</h4>
+              <ul class="list list--dot">
+                <li data-i18n="roleMidLate1">Control de zonas de pick (bushes/ramps) y jugar alrededor del smite.</li>
+                <li data-i18n="roleMidLate2">Tu presencia en entradas hace que el rival dude.</li>
+              </ul>
+            </div>
+            <div class="role__media" role="img" aria-label="Imagen MID" data-i18n-attr="aria-label:roleMidMediaLabel">
+              <img class="media__img" src="assets/mid.webp" alt="Ilustración mid lane MOBA" data-i18n-attr="alt:roleMidMediaAlt" />
+            </div>
+          </article>
+
+          <article class="role">
+            <div class="role__head">
+              <h3 data-i18n="roleAdcTitle">ADC</h3>
+              <span class="pill" data-i18n="roleAdcPill">Wave • DPS • Supervivencia</span>
+            </div>
+            <div class="role__body">
+              <h4 data-i18n="labelEarly">Early</h4>
+              <ul class="list list--dot">
+                <li data-i18n="roleAdcEarly1">No coinflip 2v2 sin info del jungla enemigo.</li>
+                <li data-i18n="roleAdcEarly2">Si el support rota, respeta: tu survival = dragón a futuro.</li>
+              </ul>
+              <h4 data-i18n="labelMid">Mid</h4>
+              <ul class="list list--dot">
+                <li data-i18n="roleAdcMid1">En dragón: DPS seguro al objetivo &gt; perseguir kills.</li>
+                <li data-i18n="roleAdcMid2">Responde a pings con wave: empuja y luego rota.</li>
+              </ul>
+              <h4 data-i18n="labelLate">Late</h4>
+              <ul class="list list--dot">
+                <li data-i18n="roleAdcLate1">No side solo sin visión. Si te mueres, perdemos tempo y objetivos.</li>
+                <li data-i18n="roleAdcLate2">Juega cerca del equipo en timers de Barón/Dragón.</li>
+              </ul>
+            </div>
+            <div class="role__media" role="img" aria-label="Imagen ADC" data-i18n-attr="aria-label:roleAdcMediaLabel">
+              <img class="media__img" src="assets/adc.webp" alt="Ilustración bot lane ADC MOBA" data-i18n-attr="alt:roleAdcMediaAlt" />
+            </div>
+          </article>
+
+          <article class="role">
+            <div class="role__head">
+              <h3 data-i18n="roleSupportTitle">SOPORTE</h3>
+              <span class="pill" data-i18n="roleSupportPill">Visión • Setup • Peel</span>
+            </div>
+            <div class="role__body">
+              <h4 data-i18n="labelEarly">Early</h4>
+              <ul class="list list--dot">
+                <li data-i18n="roleSupportEarly1">Visión proactiva según wave; pink temprano vale oro.</li>
+                <li data-i18n="roleSupportEarly2">Si hay prio, acompaña a wards profundos (30s bien usados).</li>
+              </ul>
+              <h4 data-i18n="labelMid">Mid</h4>
+              <ul class="list list--dot">
+                <li data-i18n="roleSupportMid1">Roams con intención: sweep/ward cuando pingueo objetivo decide la jugada.</li>
+                <li data-i18n="roleSupportMid2">Si no se puede pelear, ayuda a desescalar y salir.</li>
+              </ul>
+              <h4 data-i18n="labelLate">Late</h4>
+              <ul class="list list--dot">
+                <li data-i18n="roleSupportLate1">Control de entradas, peel al ADC y CC para cortar engage en objetivo.</li>
+                <li data-i18n="roleSupportLate2">Tu setup hace que el objetivo sea “gratis”.</li>
+              </ul>
+            </div>
+            <div class="role__media" role="img" aria-label="Imagen SOPORTE" data-i18n-attr="aria-label:roleSupportMediaLabel">
+              <img class="media__img" src="assets/support.webp" alt="Ilustración soporte con visión y wards MOBA" data-i18n-attr="alt:roleSupportMediaAlt" />
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cierre">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="closeTitle">Cómo cerramos la partida rápido</h2>
+          <p class="muted" data-i18n="closeIntro">La idea es convertir ventaja en estructura y tempo, no en chase infinito.</p>
+        </div>
+
+        <div class="twoCol">
+          <div class="panel">
+            <h3 data-i18n="closeRulesTitle">Reglas macro</h3>
+            <ul class="list list--dot">
+              <li data-i18n="closeRule1">Kills → torre, visión profunda u objetivo.</li>
+              <li data-i18n="closeRule2">Reset juntos después de objetivo o pick.</li>
+              <li data-i18n="closeRule3">Antes de Barón: push mid + visión + pick.</li>
+              <li data-i18n="closeRule4">Si estamos parejos: picks &gt; flips.</li>
+            </ul>
+          </div>
+
+          <div class="panel panel--media" role="img" aria-label="Imagen cierre" data-i18n-attr="aria-label:closeMediaLabel">
+            <img class="media__img" src="assets/cierre.webp" alt="Ilustración macro endgame MOBA" data-i18n-attr="alt:closeMediaAlt" />
+          </div>
+        </div>
+
+        <div class="final">
+          <h3 data-i18n="closeFinalTitle">Mensaje final 💚</h3>
+          <p data-i18n="closeFinalText">
+            Si alineamos waves, visión y tempo, las jugadas salen fáciles.
+            Pídanme cosas “jugables”: con info, con wave y con recompensa real.
+          </p>
+          <p class="muted" data-i18n="closeFinalMuted">Yo pongo orden al mapa; ustedes pongan presión a sus líneas. 🤝</p>
+          <a class="btn btn--ghost" href="#top" data-i18n="backToTop">Volver arriba</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="muted" data-i18n="footerText">Hecho para compartir con tu equipo.</p>
+    </div>
+  </footer>
+</body>
+</html>
