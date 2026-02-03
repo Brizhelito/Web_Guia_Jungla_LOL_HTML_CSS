@@ -206,7 +206,7 @@ const initI18nAndTheme = () => {
     const canvasEl = document.getElementById("irisCanvas");
     if (!canvasEl) return;
 
-    const IRIS_DURATION_MS = 1400;
+    const IRIS_DURATION_MS = 2000;
     const MASK_RES = 1024;
     const FILL_INTERNAL_HOLES = false;
     const START_SCALE_FACTOR = 1.25;
