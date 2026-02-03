@@ -195,23 +195,15 @@ code{
 
 .fixed-controls {
   position: fixed;
-  bottom: 32px; /* Aumentado de 24px */
-  right: 32px;  /* Aumentado de 24px */
+  bottom: 24px;
+  right: 24px;
   display: flex;
-  flex-direction: row;
-  gap: 16px;    /* Aumentado de 12px */
-  z-index: 1000;
+  flex-direction: row; /* Cambiado a horizontal */
+  gap: 12px;
+  z-index: 1000; /* Aumentado para asegurar visibilidad */
 }
 
 @media (max-width: 860px) {
-  .fixed-controls {
-    bottom: 24px;
-    right: 24px;
-    gap: 12px;
-  }
-}
-
-@media (max-width: 480px) {
   .fixed-controls {
     bottom: 20px;
     right: 20px;
@@ -471,35 +463,69 @@ html[lang="en"] .lang__icon--en{ opacity: 1; transform: translateY(0); }
 }
 .role{
   border-radius: var(--radius);
-  border: 1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.045);
+  border: 1px solid var(--border);
+  background: var(--surface);
   overflow: hidden;
   transition: background-color .32s ease, border-color .32s ease, box-shadow .32s ease;
+  display: flex;
+  flex-direction: column;
 }
 .role__head{
-  padding: 14px 16px;
+  padding: 10px 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  border-bottom: 1px solid rgba(255,255,255,.10);
+  border-bottom: 1px solid var(--border);
   background: rgba(255,255,255,.03);
+  flex-shrink: 0;
+}
+.role__head h3{
+  margin: 0;
+  font-size: 20px;
 }
 .pill{
   display: inline-flex;
-  padding: 4px 12px;
+  padding: 4px 8px;
   border-radius: 999px;
   border: 1px solid var(--border);
-  background: var(--surface);
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   color: var(--muted);
-  transition: var(--transition);
+  font-weight: 750;
+  font-size: 12px;
+  white-space: nowrap;
 }
-.role__body{ padding: 14px 16px; }
-.role__media{ margin: 0 16px 16px; min-height: 220px; }
+.role__body{ 
+  padding: 10px 12px; 
+  flex: 1;
+  overflow: hidden;
+}
+.role__body h4{
+  margin: 6px 0 4px 0;
+  font-size: 16px;
+}
+.role__body .list{
+  padding-left: 16px;
+  margin: 4px 0 6px;
+}
+.role__body .list li{
+  margin: 3px 0;
+  font-size: 15px;
+}
+.role__media{ 
+  margin: 8px 0 10px; 
+  min-height: 0;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+}
+.media__img{ 
+  width: 100%; 
+  height: 100%; 
+  object-fit: contain;
+  display: block;
+  background: rgba(255,255,255,.02);
+}
 
 .final{
   margin-top: 16px;
