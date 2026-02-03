@@ -104,6 +104,19 @@ const initI18nAndTheme = () => {
         e.stopPropagation();
         const next = state.theme === 'dark' ? 'light' : 'dark';
         setTheme(next);
+        return;
+      }
+
+      // Manejo del botón Volver Arriba
+      const backToTopBtn = e.target.closest('a[href="#top"]');
+      if (backToTopBtn) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+        // Actualizamos la URL sin recargar para mantener coherencia
+        history.pushState(null, null, '#top');
       }
     };
 
