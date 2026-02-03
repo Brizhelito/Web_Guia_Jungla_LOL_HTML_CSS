@@ -195,15 +195,23 @@ code{
 
 .fixed-controls {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: 32px; /* Aumentado de 24px */
+  right: 32px;  /* Aumentado de 24px */
   display: flex;
-  flex-direction: row; /* Cambiado a horizontal */
-  gap: 12px;
-  z-index: 1000; /* Aumentado para asegurar visibilidad */
+  flex-direction: row;
+  gap: 16px;    /* Aumentado de 12px */
+  z-index: 1000;
 }
 
 @media (max-width: 860px) {
+  .fixed-controls {
+    bottom: 24px;
+    right: 24px;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
   .fixed-controls {
     bottom: 20px;
     right: 20px;
