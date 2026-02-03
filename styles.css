@@ -108,6 +108,19 @@ code{
   background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.25), rgba(var(--accent-rgb), 0.1));
 }
 
+.btn--ghost{
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  padding: 8px 16px;
+}
+
+.btn--ghost:hover{
+  background: var(--surface);
+  border-color: var(--border);
+  transform: translateY(-1px);
+}
+
 .card, .panel, .step, .role, .split__text{
   background: var(--surface);
   border: 1px solid var(--border);
@@ -178,7 +191,24 @@ code{
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
+}
+
+.fixed-controls {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 100;
+}
+
+@media (max-width: 860px) {
+  .fixed-controls {
+    bottom: 16px;
+    right: 16px;
+    gap: 10px;
+  }
 }
 
 .lang__toggle,
@@ -191,7 +221,9 @@ code{
   padding: 0;
   border-radius: 50%; /* Circular para las banderas */
   border: 2px solid var(--border);
-  background: var(--surface);
+  background: var(--topbar-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: var(--text);
   cursor: pointer;
   transition: var(--transition);
