@@ -58,7 +58,7 @@ const initI18nAndTheme = () => {
     if (!isInitial) {
       state.isTransitioning = true;
       document.body.classList.add('is-switching-lang');
-      await new Promise(resolve => setTimeout(resolve, 300));
+      await new Promise(resolve => setTimeout(resolve, 150));
     }
 
     const messages = await loadMessages(lang);
