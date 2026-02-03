@@ -198,15 +198,15 @@ code{
   bottom: 24px;
   right: 24px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Cambiado a horizontal */
   gap: 12px;
-  z-index: 100;
+  z-index: 1000; /* Aumentado para asegurar visibilidad */
 }
 
 @media (max-width: 860px) {
   .fixed-controls {
-    bottom: 16px;
-    right: 16px;
+    bottom: 20px;
+    right: 20px;
     gap: 10px;
   }
 }
