@@ -1,0 +1,1531 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Manual anti-ruleta</title>
+        <meta
+            name="description"
+            content="Protocolo claro para jugar desde atrás y no regalar muertes."
+        />
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="icon" type="image/webp" href="assets/favicon.webp" />
+        <script src="script.js" defer></script>
+    </head>
+
+    <body class="page--manual">
+        <canvas
+            id="irisCanvas"
+            class="iris-transition"
+            aria-hidden="true"
+        ></canvas>
+
+        <header class="topbar topbar--manual" id="top">
+            <div class="container topbar__inner">
+                <a
+                    class="brand"
+                    href="index.html"
+                    aria-label="Volver al inicio"
+                >
+                    <span class="brand__dot" aria-hidden="true"></span>
+                    <span>Guía Jungla</span>
+                </a>
+
+                <nav class="nav nav--pills" aria-label="Secciones">
+                    <a class="nav__link" href="#inicio">Inicio</a>
+                    <a class="nav__link" href="#protocolo">Protocolo</a>
+                    <a class="nav__link" href="#waves">Wave & visión</a>
+                    <a class="nav__link" href="#roles">Roles & peleas</a>
+                    <a class="nav__link" href="#cierre">Cierre</a>
+                </nav>
+
+                <div class="topbar__actions">
+                    <a class="btn btn--ghost" href="index.html"
+                        >Volver a la guía</a
+                    >
+
+                    <div class="controls-group">
+                        <button
+                            class="tone__toggle"
+                            type="button"
+                            data-tone-toggle
+                            aria-pressed="false"
+                            aria-label="Cambiar tono"
+                        >
+                            <span
+                                class="tone__icon tone__icon--calm"
+                                aria-hidden="true"
+                                >🙂</span
+                            >
+                            <span
+                                class="tone__icon tone__icon--salt"
+                                aria-hidden="true"
+                                >🌶️</span
+                            >
+                        </button>
+                        <button
+                            class="theme__toggle"
+                            type="button"
+                            data-theme-toggle
+                            aria-pressed="true"
+                            aria-label="Cambiar tema"
+                        >
+                            <span
+                                class="theme__icon theme__icon--sun"
+                                aria-hidden="true"
+                            >
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    width="20"
+                                    height="20"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <circle cx="12" cy="12" r="5" />
+                                    <line x1="12" y1="1" x2="12" y2="3" />
+                                    <line x1="12" y1="21" x2="12" y2="23" />
+                                    <line
+                                        x1="4.22"
+                                        y1="4.22"
+                                        x2="5.64"
+                                        y2="5.64"
+                                    />
+                                    <line
+                                        x1="18.36"
+                                        y1="18.36"
+                                        x2="19.78"
+                                        y2="19.78"
+                                    />
+                                    <line x1="1" y1="12" x2="3" y2="12" />
+                                    <line x1="21" y1="12" x2="23" y2="12" />
+                                    <line
+                                        x1="4.22"
+                                        y1="19.78"
+                                        x2="5.64"
+                                        y2="18.36"
+                                    />
+                                    <line
+                                        x1="18.36"
+                                        y1="5.64"
+                                        x2="19.78"
+                                        y2="4.22"
+                                    />
+                                </svg>
+                            </span>
+                            <span
+                                class="theme__icon theme__icon--moon"
+                                aria-hidden="true"
+                            >
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    width="20"
+                                    height="20"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path
+                                        d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                                    />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero hero--manual" id="inicio">
+                <div class="container hero__grid">
+                    <div>
+                        <p class="kicker">Manual extra</p>
+                        <h1>Manual anti-ruleta</h1>
+                        <p class="lead">
+                            Protocolo claro para cuando vas por detrás: menos
+                            muertes, más control y más opciones reales de
+                            comeback.
+                        </p>
+
+                        <div class="hero__actions">
+                            <a class="btn" href="#protocolo">Ir al protocolo</a>
+                            <a class="btn btn--secondary" href="index.html"
+                                >Volver a la guía</a
+                            >
+                        </div>
+
+                        <div class="hero__note">
+                            <p>
+                                <strong>Atajo:</strong> presiona <code>J</code>
+                                desde cualquier página para abrir esta guía.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="hero__media"
+                        role="img"
+                        aria-label="Imagen de mapa estilo MOBA"
+                    >
+                        <img
+                            class="media__img"
+                            src="assets/hero.webp"
+                            alt="Mapa estilo MOBA visto desde arriba"
+                        />
+                    </div>
+                </div>
+            </section>
+
+            <section class="section section--alt manual-section" id="protocolo">
+                <div class="container">
+                    <div class="section__head">
+                        <h2>Protocolo mental y decisión</h2>
+                        <p class="muted">
+                            Lo primero es cortar la cadena de errores. Luego
+                            decides con intención.
+                        </p>
+                    </div>
+
+                    <div class="tone-stack">
+                        <div class="tone-block tone-block--calm">
+                            <div class="tone-banner">
+                                <span class="pill">AMOROSA</span>
+                                <p class="muted">
+                                    Estabilidad, claridad y control emocional.
+                                </p>
+                            </div>
+
+                            <div class="slides">
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 1</span>
+                                        <h3>
+                                            Vamos a encontrar el punto medio
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    No se trata de jugar “más
+                                                    agresivo” o “más safe”
+                                                </li>
+                                                <li>
+                                                    Se trata de decidir mejor
+                                                    según la situación
+                                                </li>
+                                                <li>
+                                                    Objetivo: estabilidad +
+                                                    impacto constante
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                La meta es que tus partidas no
+                                                dependan de un early perfecto.
+                                                Vamos a construir un plan para
+                                                cuando vas ganando y, sobre
+                                                todo, para cuando vas perdiendo:
+                                                cómo seguir siendo útil sin
+                                                frustrarte.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 2</span>
+                                        <h3>
+                                            Lo que te está pasando (sin culpas)
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    Quieres recuperar rápido lo
+                                                    perdido
+                                                </li>
+                                                <li>
+                                                    Te quedas en línea con poca
+                                                    vida/mana
+                                                </li>
+                                                <li>
+                                                    Te expones sin información
+                                                </li>
+                                                <li>
+                                                    Confundes CS con obligación
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Esto le pasa a muchísima gente.
+                                                Es normal querer “arreglarlo
+                                                ya”. El problema es que esa
+                                                urgencia crea más errores. Vamos
+                                                a reemplazar urgencia por un
+                                                protocolo simple.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 3</span>
+                                        <h3>
+                                            La idea central cuando vas perdiendo
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    Tu prioridad: dejar de
+                                                    perder más
+                                                </li>
+                                                <li>
+                                                    XP es tu suelo (no lo
+                                                    pierdas)
+                                                </li>
+                                                <li>
+                                                    Pelear solo con una razón
+                                                    clara
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Si estás detrás, tu valor viene
+                                                de mantenerte en partida. Cada
+                                                minuto vivo es una oportunidad
+                                                de farmear, resetear y estar
+                                                presente en una jugada buena.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 4</span>
+                                        <h3>
+                                            Modo Ancla: un plan cuando te cuesta
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    2 muertes antes de min 8 →
+                                                    Modo Ancla
+                                                </li>
+                                                <li>Jugar corto</li>
+                                                <li>Evitar trades largos</li>
+                                                <li>
+                                                    Priorizar visión defensiva
+                                                </li>
+                                                <li>Buscar waves seguras</li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                No es rendirse; es estabilizar.
+                                                En Modo Ancla, tu objetivo es
+                                                recuperar control: menos riesgo,
+                                                más consistencia. Eso te permite
+                                                llegar a tus spikes.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 5</span>
+                                        <h3>
+                                            Qué significa “jugar bien desde
+                                            atrás”
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    No morir de forma repetida
+                                                </li>
+                                                <li>
+                                                    Mantener tu torre lo máximo
+                                                    posible
+                                                </li>
+                                                <li>
+                                                    Llegar a 1–2 items/levels
+                                                    importantes
+                                                </li>
+                                                <li>
+                                                    Estar listo para una pelea
+                                                    buena
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Un jugador que va 0/2 y deja de
+                                                morir suele ser más útil que uno
+                                                que fuerza y termina 0/6. La
+                                                partida te va a ofrecer una
+                                                ventana; hay que estar vivo para
+                                                tomarla.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 6</span>
+                                        <h3>Decidir peleas con calma</h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <p class="muted">
+                                                Antes de pelear, pregunta:
+                                            </p>
+                                            <ul class="list list--dot">
+                                                <li>¿Tengo spike?</li>
+                                                <li>
+                                                    ¿Dónde están los junglas?
+                                                </li>
+                                                <li>
+                                                    ¿Qué objetivo gano si sale
+                                                    bien?
+                                                </li>
+                                                <li>
+                                                    ¿Qué pierdo si sale mal?
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Esta mini-pausa te cambia la
+                                                partida. No necesitas ganar
+                                                todas las peleas; necesitas
+                                                elegir las que tengan sentido.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+
+                        <div class="tone-block tone-block--salt">
+                            <div class="tone-banner">
+                                <span class="pill">PICANTE</span>
+                                <p class="muted">
+                                    Directo, sin anestesia, pero con protocolo.
+                                </p>
+                            </div>
+
+                            <div class="slides">
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 1</span>
+                                        <h3>De 10/0 a 0/10: hoy se acaba</h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    Si vas ganando: no te
+                                                    suicides por ego
+                                                </li>
+                                                <li>
+                                                    Si vas perdiendo: no te
+                                                    suicides por pánico
+                                                </li>
+                                                <li>
+                                                    Objetivo: jugar con el mapa,
+                                                    no contra él
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Hoy no venimos a “jugar más
+                                                agresivo” ni a “jugar más safe”.
+                                                Venimos a dejar de jugar a la
+                                                ruleta. Tu KDA no puede ser una
+                                                moneda: o stompeas o te
+                                                estampas. Vamos a poner un
+                                                protocolo para cuando vas
+                                                perdiendo y para cuando vas
+                                                ganando.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 2</span>
+                                        <h3>El patrón que te manda al 0/10</h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    “Perdí un trade → tengo que
+                                                    recuperarlo YA”
+                                                </li>
+                                                <li>
+                                                    “Morí → vuelvo corriendo →
+                                                    muero otra vez”
+                                                </li>
+                                                <li>
+                                                    “No veo jungla → igual me
+                                                    estiro”
+                                                </li>
+                                                <li>“Un cañón vale mi vida”</li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Tu problema no es mecánica: es
+                                                decisión. Te autosaboteas
+                                                repitiendo la misma escena:
+                                                mueres, vuelves tilt, y te
+                                                vuelves a exponer. El rival no
+                                                tiene que ser bueno: solo tiene
+                                                que esperarte.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 3</span>
+                                        <h3>
+                                            La regla madre cuando vas perdiendo
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    Si no sé qué gano, NO peleo
+                                                </li>
+                                                <li>
+                                                    Tu primer objetivo: no
+                                                    regalar la siguiente muerte
+                                                </li>
+                                                <li>
+                                                    XP &gt; CS cuando estás muy
+                                                    atrás
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Cuando vas por detrás, cada
+                                                muerte es doble castigo: pierdes
+                                                tiempo, pierdes wave, pierdes
+                                                placas/torre, y además das oro.
+                                                El comeback no viene de “ganar
+                                                un 1v1 imposible”, viene de
+                                                llegar vivo a una pelea buena.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 4</span>
+                                        <h3>
+                                            Modo Ancla (el antídoto al 0/10)
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <p class="muted">
+                                                Activación y reglas:
+                                            </p>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    2 muertes antes de min 8 →
+                                                    Modo Ancla
+                                                </li>
+                                                <li>No trades largos</li>
+                                                <li>No chase</li>
+                                                <li>No facecheck</li>
+                                                <li>No “una wave más”</li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Esto es un interruptor. Te
+                                                mueres 2 veces temprano: listo,
+                                                cambias de modo. No negocias con
+                                                el tilt. Tu misión es
+                                                estabilizar la partida, no
+                                                “demostrar” nada.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 5</span>
+                                        <h3>
+                                            Tu nueva métrica (KPI) cuando vas
+                                            detrás
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    0 muertes extra hasta min 14
+                                                </li>
+                                                <li>
+                                                    Mantener torre viva (o
+                                                    evitar placas gratis)
+                                                </li>
+                                                <li>
+                                                    Llegar a 1–2 spikes sin
+                                                    regalar shutdown
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Desde atrás, no compites por
+                                                “quién mata más”. Compites por
+                                                “quién comete menos errores”. Si
+                                                dejas de regalar, el rival se
+                                                queda sin gasolina cuando el
+                                                mapa te ofrezca una jugada real.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 6</span>
+                                        <h3>
+                                            Árbol de decisión: “¿Puedo pelear?”
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <p class="muted">
+                                                Pregunta en 3 segundos:
+                                            </p>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    ¿Estoy en spike?
+                                                    (lvl/ulti/item)
+                                                </li>
+                                                <li>
+                                                    ¿Dónde están los junglas?
+                                                    (si no sé → asumo cerca)
+                                                </li>
+                                                <li>
+                                                    ¿Qué gano si sale bien?
+                                                    (torre/placas/objetivo/shutdown)
+                                                </li>
+                                                <li>
+                                                    ¿Qué pierdo si sale mal?
+                                                    (muerte + wave + placas +
+                                                    tempo)
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Si no puedes responder el punto
+                                                3 con algo concreto, no estás
+                                                jugando LoL, estás jugando
+                                                casino. Y en el casino, la casa
+                                                siempre gana.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section manual-section" id="waves">
+                <div class="container">
+                    <div class="section__head">
+                        <h2>Wave, visión y resets</h2>
+                        <p class="muted">
+                            Menos exposición, más tempo. Tu vida vale más que
+                            una wave bonita.
+                        </p>
+                    </div>
+
+                    <div class="tone-stack">
+                        <div class="tone-block tone-block--calm">
+                            <div class="slides">
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 7</span>
+                                        <h3>
+                                            Wave management básico para
+                                            estabilizar
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    Desde atrás: wave cerca de
+                                                    tu torre
+                                                </li>
+                                                <li>Congelar si puedes</li>
+                                                <li>
+                                                    Si no puedes: farmea seguro
+                                                    y conserva vida
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                La wave es tu herramienta
+                                                defensiva. Tenerla cerca reduce
+                                                ganks, reduce dives y te da
+                                                espacio para escalar.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 8</span>
+                                        <h3>Freeze simple (paso a paso)</h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    Deja que el rival empuje
+                                                </li>
+                                                <li>Last hit tarde</li>
+                                                <li>
+                                                    Si te zonnea: toma XP, cede
+                                                    CS
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Ceder algunos súbditos puede
+                                                sentirse mal, pero es una
+                                                inversión. Estás comprando
+                                                tiempo y evitando muertes que
+                                                cuestan muchísimo más.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 9</span>
+                                        <h3>Resets saludables</h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    Back cuando estás low (no
+                                                    “una más”)
+                                                </li>
+                                                <li>
+                                                    Ideal: con wave crasheada o
+                                                    segura
+                                                </li>
+                                                <li>
+                                                    Vuelve con plan: ward + ruta
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Un buen reset es una decisión de
+                                                alto nivel. Te evita morir por
+                                                greedy y mantiene tu ritmo en la
+                                                partida.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 10</span>
+                                        <h3>Visión simple y efectiva</h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>Ward defensivo primero</li>
+                                                <li>
+                                                    Juega hacia el lado con
+                                                    visión
+                                                </li>
+                                                <li>
+                                                    Si no hay info: juega corto
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                No necesitas visión perfecta;
+                                                necesitas la mínima información
+                                                para no exponerte. Eso reduce
+                                                muertes y te deja espacio para
+                                                farmear.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+
+                        <div class="tone-block tone-block--salt">
+                            <div class="slides">
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 7</span>
+                                        <h3>
+                                            Wave management de emergencia
+                                            (Mid/Top)
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    Si vas perdiendo: no empujes
+                                                    por reflejo
+                                                </li>
+                                                <li>
+                                                    Prioridad: wave cerca de tu
+                                                    torre
+                                                </li>
+                                                <li>
+                                                    Congelar = seguridad + XP
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Cuando estás detrás, la wave es
+                                                tu chaleco antibalas. Empujar
+                                                sin info es la forma más rápida
+                                                de regalar otra muerte. Congela
+                                                si puedes; si no, farmea lo que
+                                                puedas y conserva vida.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 8</span>
+                                        <h3>
+                                            Freeze simple (cuando estás
+                                            perdiendo)
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    Deja que el rival empuje
+                                                </li>
+                                                <li>
+                                                    Last hit tarde, cerca de
+                                                    torre
+                                                </li>
+                                                <li>
+                                                    Si te zonea: toma XP, cede
+                                                    CS
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Sí, vas a perder algunos
+                                                súbditos. ¿Y? Mejor perder 6 cs
+                                                que regalar 300 de oro + wave
+                                                entera + placas. Tu objetivo es
+                                                cortar la hemorragia.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 9</span>
+                                        <h3>
+                                            Cuándo crashear la wave (sin morir)
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <p class="muted">
+                                                Crashea solo si:
+                                            </p>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    Ves al jungla rival lejos, o
+                                                </li>
+                                                <li>
+                                                    Tienes visión suficiente, o
+                                                </li>
+                                                <li>Tu jungla te cubre, o</li>
+                                                <li>El rival baseó (tempo)</li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Crashear sin condiciones es
+                                                regalarte. Crashear con
+                                                condiciones es reset limpio. Tu
+                                                vida vale más que “quedar con la
+                                                wave bonita”.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 10</span>
+                                        <h3>
+                                            Visión para humanos (cuando vas
+                                            perdiendo)
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    Ward defensivo &gt; ward
+                                                    profundo
+                                                </li>
+                                                <li>
+                                                    Juega hacia el lado con
+                                                    visión
+                                                </li>
+                                                <li>
+                                                    Si no ves jungla: no te
+                                                    estires
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Tu visión no es para “hacer
+                                                highlight”, es para no morir. Si
+                                                no sabes dónde están, tu
+                                                posición default es corta. El
+                                                rival no te mata por habilidad:
+                                                te mata por información.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 11</span>
+                                        <h3>
+                                            Resets limpios (la parte que nadie
+                                            respeta)
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    No “una wave más” si estás
+                                                    low
+                                                </li>
+                                                <li>
+                                                    Back con wave crasheada o
+                                                    segura
+                                                </li>
+                                                <li>
+                                                    Vuelve con plan: ward + ruta
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                La mayoría de muertes tontas
+                                                ocurren antes del back o
+                                                volviendo sin plan. Resetea a
+                                                tiempo. Un reset bueno vale más
+                                                que una kill dudosa.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section section--alt manual-section" id="roles">
+                <div class="container">
+                    <div class="section__head">
+                        <h2>Roles y peleas</h2>
+                        <p class="muted">
+                            Mantén presencia sin regalar tempo. Tu rol cambia
+                            cuando vas detrás.
+                        </p>
+                    </div>
+
+                    <div class="tone-stack">
+                        <div class="tone-block tone-block--calm">
+                            <div class="slides">
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 11</span>
+                                        <h3>MID: cómo aportar desde atrás</h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>Prioriza limpiar waves</li>
+                                                <li>
+                                                    Roam solo si no pierdes
+                                                    waves gratis
+                                                </li>
+                                                <li>
+                                                    Busca roams con setup claro
+                                                    (CC/flash/posición)
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Mid desde atrás es tempo:
+                                                mantener oleadas y estar
+                                                disponible. Roamear por ansiedad
+                                                suele empeorar la situación;
+                                                roamear con una ventana clara sí
+                                                suma.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 12</span>
+                                        <h3>
+                                            TOP: cómo jugar weakside con
+                                            tranquilidad
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>Acepta ceder CS por XP</li>
+                                                <li>
+                                                    Evita estar largo sin visión
+                                                </li>
+                                                <li>
+                                                    TP para jugadas macro, no
+                                                    para forzar 1v1
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Top castiga mucho cuando vas
+                                                detrás. Tu plan es sobrevivir,
+                                                mantener tu torre lo más posible
+                                                y usar TP para impactar donde tu
+                                                equipo lo necesita.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 13</span>
+                                        <h3>
+                                            Teamfights desde atrás: tu rol
+                                            cambia
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>No entres primero</li>
+                                                <li>
+                                                    Juega con tu equipo
+                                                    (peel/contra-engage)
+                                                </li>
+                                                <li>
+                                                    Prioriza shutdowns y
+                                                    objetivos
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Cuando estás detrás, tu impacto
+                                                viene de jugar en conjunto. No
+                                                necesitas “cargar”; necesitas
+                                                ejecutar bien y castigar errores
+                                                del rival.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+
+                        <div class="tone-block tone-block--salt">
+                            <div class="slides">
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 12</span>
+                                        <h3>
+                                            MID desde atrás (sin desaparecer del
+                                            mapa)
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    Tu trabajo: limpiar → reset
+                                                    → volver
+                                                </li>
+                                                <li>No roam con wave mala</li>
+                                                <li>
+                                                    Roam solo con setup claro
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Mid desde atrás no es “salir a
+                                                buscar milagros”. Es jugar
+                                                tempo: mantener waves, estar
+                                                disponible, y no regalar
+                                                torre/placas por roams de
+                                                desesperación.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 13</span>
+                                        <h3>
+                                            TOP desde atrás (weakside sin int)
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>Acepta ceder CS por XP</li>
+                                                <li>
+                                                    No te quedes largo sin
+                                                    visión
+                                                </li>
+                                                <li>
+                                                    TP = herramienta macro, no
+                                                    “volver a morir”
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Top es la línea donde más se
+                                                castiga el ego. Si vas detrás y
+                                                te quedas largo, te gankean, te
+                                                divean y la torre cae. Tu
+                                                victoria es sobrevivir y ser
+                                                útil con niveles/TP en la jugada
+                                                correcta.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 14</span>
+                                        <h3>
+                                            Peleas de equipo cuando vas
+                                            perdiendo
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>No entres primero</li>
+                                                <li>
+                                                    Juega peel/contra-engage
+                                                </li>
+                                                <li>
+                                                    Busca shutdowns, no duelos
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Tu oro real viene de shutdowns y
+                                                buenas peleas con números. Si
+                                                vas detrás, tu rol es habilitar
+                                                la pelea, no abrirla con la
+                                                cara.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section manual-section" id="cierre">
+                <div class="container">
+                    <div class="section__head">
+                        <h2>Itemización y cierre</h2>
+                        <p class="muted">
+                            Sobrevivir primero, escalar después. Cerrar sin
+                            regalar.
+                        </p>
+                    </div>
+
+                    <div class="tone-stack">
+                        <div class="tone-block tone-block--calm">
+                            <div class="slides">
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 14</span>
+                                        <h3>Itemización: seguridad primero</h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    Si te matan rápido: compra
+                                                    resistencias/vida
+                                                </li>
+                                                <li>
+                                                    Daño si te permite waveclear
+                                                    seguro
+                                                </li>
+                                                <li>
+                                                    Control wards cuando la
+                                                    muerte es por sorpresa
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                La mejor compra desde atrás es
+                                                la que reduce muertes. Si mueres
+                                                menos, farmeas más; si farmeas
+                                                más, vuelves a la partida.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 15</span>
+                                        <h3>Mini checklist por estado</h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    0/1: juega corto, respeta
+                                                    all-in
+                                                </li>
+                                                <li>
+                                                    0/2: Modo Ancla, freeze, no
+                                                    roam sin push
+                                                </li>
+                                                <li>
+                                                    0/3: supervivencia + XP +
+                                                    visión (cero riesgos)
+                                                </li>
+                                                <li>
+                                                    Vas ganando: no dive sin
+                                                    wave, no invadas sin info
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Esto es un mapa mental. No hay
+                                                que hacerlo perfecto: con
+                                                cumplirlo “más seguido”, tus
+                                                partidas se vuelven muchísimo
+                                                más estables.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 16</span>
+                                        <h3>Cierre</h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    Menos muertes = más
+                                                    oportunidades
+                                                </li>
+                                                <li>
+                                                    El comeback llega con tiempo
+                                                    y orden
+                                                </li>
+                                                <li>
+                                                    Tu objetivo es consistencia
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Tu valor no es solo matar. Es
+                                                mantenerte útil siempre: cuando
+                                                vas ganando, cuando vas parejo y
+                                                cuando vas detrás. Con este
+                                                protocolo, vas a sentir que
+                                                tienes control real de la
+                                                partida.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+
+                        <div class="tone-block tone-block--salt">
+                            <div class="slides">
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 15</span>
+                                        <h3>
+                                            Itemización desde atrás (principio
+                                            básico)
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    Si te matan en una rotación
+                                                    → resiste primero
+                                                </li>
+                                                <li>
+                                                    Daño solo si te da waveclear
+                                                    seguro
+                                                </li>
+                                                <li>
+                                                    Control wards: barata la
+                                                    vida
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Cuando vas behind, la mejor
+                                                compra es la que reduce la
+                                                probabilidad de morir. Porque si
+                                                mueres, no hay build que te
+                                                salve.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 16</span>
+                                        <h3>
+                                            Checklist final (pegado al monitor)
+                                        </h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    Si vas 0/1: respeta all-in,
+                                                    juega corto
+                                                </li>
+                                                <li>
+                                                    Si vas 0/2: Modo Ancla,
+                                                    congela, no roam
+                                                </li>
+                                                <li>
+                                                    Si vas 0/3: no laneas:
+                                                    sobrevives + waves + visión
+                                                </li>
+                                                <li>
+                                                    Si vas ganando: no dive sin
+                                                    wave, no invadas sin visión
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                Esto es el “manual anti-ruleta”.
+                                                No es sexy, pero funciona. Dejar
+                                                de morir te devuelve partidas
+                                                que antes “eran imposibles”.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="slide">
+                                    <div class="slide__head">
+                                        <span class="pill">Paso 17</span>
+                                        <h3>Cierre</h3>
+                                    </div>
+                                    <div class="twoCol">
+                                        <div class="panel">
+                                            <h4>En pantalla</h4>
+                                            <ul class="list list--dot">
+                                                <li>
+                                                    Menos ego, más protocolo
+                                                </li>
+                                                <li>No regales muertes</li>
+                                                <li>
+                                                    El comeback existe si llegas
+                                                    vivo
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel">
+                                            <h4>Guión</h4>
+                                            <p>
+                                                No necesitas volverte perfecto.
+                                                Necesitas dejar de repetir el
+                                                mismo error. Si hoy reduces 2
+                                                muertes por partida, subes de
+                                                nivel como jugador más que con
+                                                cualquier combo.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container footer__inner"></div>
+        </footer>
+
+        <audio id="open-audio" src="assets/intro.mp3" preload="auto"></audio>
+    </body>
+</html>
