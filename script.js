@@ -4,6 +4,7 @@ const initI18nAndTheme = () => {
     tone: localStorage.getItem("tone") || "normal",
     theme: localStorage.getItem("theme") || "dark",
     cache: {},
+    messages: null,
     isTransitioning: false,
   };
 
@@ -82,6 +83,7 @@ const initI18nAndTheme = () => {
       applyTranslations(messages, lang);
       updateLangUI(lang);
       updateToneUI(tone);
+      state.messages = messages;
       state.lang = lang;
       state.tone = tone;
       localStorage.setItem("lang", lang);
@@ -107,6 +109,61 @@ const initI18nAndTheme = () => {
   };
 
   const setupEventListeners = () => {
+    const mainAudio = document.getElementById("main-audio");
+    const mainAudioState = {
+      started: false,
+      lastPromptAt: 0,
+      promptShown: false,
+    };
+
+    const getMessage = (key, fallback) => {
+      const cacheKey = getLocaleKey(state.lang, state.tone);
+      const messages = state.messages || state.cache[cacheKey];
+      if (messages && typeof messages[key] === "string") {
+        return messages[key];
+      }
+      return fallback;
+    };
+
+    const isInteractiveTarget = (target) =>
+      Boolean(
+        target?.closest?.(
+          "a, button, input, textarea, select, label, summary, [role='button'], [data-audio-ignore]",
+        ),
+      );
+
+    const handleMainAudioClick = (e) => {
+      if (!mainAudio) return;
+
+      if (!mainAudioState.started || mainAudio.paused) {
+        mainAudioState.started = true;
+        const playPromise = mainAudio.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.catch(() => {
+            mainAudioState.started = false;
+          });
+        }
+        return;
+      }
+
+      if (isInteractiveTarget(e.target)) return;
+      if (mainAudioState.promptShown) return;
+
+      const now = Date.now();
+      if (now - mainAudioState.lastPromptAt < 800) return;
+      mainAudioState.lastPromptAt = now;
+
+      const promptText = getMessage(
+        "mainAudioStopPrompt",
+        "Quieres detener la cancion?",
+      );
+      mainAudioState.promptShown = true;
+      if (window.confirm(promptText)) {
+        mainAudio.pause();
+        mainAudio.currentTime = 0;
+      }
+    };
+
     const handleGlobalClick = (e) => {
       const langBtn = e.target.closest("[data-lang-toggle]");
       if (langBtn) {
@@ -185,6 +242,7 @@ const initI18nAndTheme = () => {
       }
     };
 
+    document.addEventListener("click", handleMainAudioClick, true);
     document.addEventListener("click", handleGlobalClick, true);
     document.addEventListener("keydown", handleGlobalKeydown, true);
     if (document.body.classList.contains("page--manual")) {
